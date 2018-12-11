@@ -33,6 +33,7 @@ int snakeY[SNAKE_MAX_LENGTH]={1,2,3,4,5};
 int snakeX[SNAKE_MAX_LENGTH]={1,1,1,1,1};//蛇身初始位置 
 int snakelength = 5;//初始长度
 int gamerunning = 1;// 判断游戏是否继续
+int islonger = 0;
 
 void set_food()//生成食物
 {
@@ -43,6 +44,14 @@ void set_food()//生成食物
 		foodY = rand() % 10 + 1;
 	}//如果食物没有在空白处生成就再生成一次
 	map[foodX][foodY] = SNAKE_FOOD;
+}
+
+void output()//打印地图
+{
+	system("cls");
+	for (int i = 0; i < 12; ++i) {
+		printf("%s\n", map[i]);
+	}
 }
 
 void  GameOver(void){
@@ -118,7 +127,7 @@ void snakeMove(char control){
 			map[snakeX[snakeLength - 1]][snakeY[snakeLength - 1]] = SNAKE_HEAD;//打印新的头的位置
 			for (int i = snakeLength - 2; i >= 0; i--)
 				map[snakeX[i]][snakeY[i]] = SNAKE_BODY;//打印身体
-			food();
+			set_food();
 		}//吃到食物
 	}
 }
@@ -126,7 +135,7 @@ void snakeMove(char control){
 int main(void)
 {
 	srand(time(NULL));
-	food();//先生成食物
+	set_food();//先生成食物
 	output();//开始先打印一遍地图
 	char control = 0;
 	while (gamerunning==1) {
