@@ -31,7 +31,7 @@ int foodX = 0;
 int foodY = 0;//食物初始位置
 int snakeY[SNAKE_MAX_LENGTH]={1,2,3,4,5};
 int snakeX[SNAKE_MAX_LENGTH]={1,1,1,1,1};//蛇身初始位置 
-int snakelength = 5;//初始长度
+int snakeLength = 5;//初始长度
 int gamerunning = 1;// 判断游戏是否继续
 int islonger = 0;
 
